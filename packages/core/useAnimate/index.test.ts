@@ -1,9 +1,11 @@
-import { mount } from '@vue/test-utils'
-import { describe, expect, it } from 'vitest'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
 import { defineComponent, shallowRef } from 'vue'
 import { useAnimate } from './index'
 
 describe('useAnimate', () => {
+  enableAutoUnmount(afterEach)
+
   it('should be defined', () => {
     expect(useAnimate).toBeDefined()
   })
@@ -21,6 +23,5 @@ describe('useAnimate', () => {
     const vm = wrapper.vm
 
     expect(vm.isSupported).toBe(false)
-    wrapper.unmount()
   })
 })

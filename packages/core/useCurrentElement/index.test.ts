@@ -1,9 +1,11 @@
-import { mount } from '@vue/test-utils'
-import { describe, expect, it } from 'vitest'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
+import { afterEach, describe, expect, it } from 'vitest'
 import { defineComponent, shallowRef } from 'vue'
 import { useCurrentElement } from './index'
 
 describe('useCurrentElement', () => {
+  enableAutoUnmount(afterEach)
+
   it('should be defined', () => {
     expect(useCurrentElement).toBeDefined()
   })
@@ -21,7 +23,6 @@ describe('useCurrentElement', () => {
     const vm = wrapper.vm
 
     expect(vm.currentElement).toBe(vm.el)
-    wrapper.unmount()
   })
 
   it('should return the root element from the passed component', () => {
@@ -52,6 +53,5 @@ describe('useCurrentElement', () => {
 
     expect(vm.currentElementEl).toBe((vm.el as typeof TestVueComponent).rootEl)
     expect((vm.currentElementEl as HTMLElement).textContent).toBe('Hello world')
-    wrapper.unmount()
   })
 })

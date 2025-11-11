@@ -1,11 +1,13 @@
-import { mount } from '@vue/test-utils'
+import { enableAutoUnmount, mount } from '@vue/test-utils'
 import { unrefElement } from '@vueuse/core'
 import Sortable from 'sortablejs'
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it } from 'vitest'
 import { defineComponent, shallowRef, useTemplateRef } from 'vue'
 import { useSortable } from './index'
 
 describe('useSortable', () => {
+  enableAutoUnmount(afterEach)
+
   it('should initialise Sortable', () => {
     const wrapper = mount(defineComponent({
       template: '<div ref="el"></div>',
@@ -19,13 +21,8 @@ describe('useSortable', () => {
       },
     }))
     const vm = wrapper.vm
-    try {
-      const sortable = Sortable.get(vm.el!)
-      expect(sortable).toBeDefined()
-    }
-    finally {
-      wrapper.unmount()
-    }
+    const sortable = Sortable.get(vm.el!)
+    expect(sortable).toBeDefined()
   })
 
   it('should accept selectors as el', () => {
@@ -43,13 +40,8 @@ describe('useSortable', () => {
       attachTo: document.body,
     })
     const vm = wrapper.vm
-    try {
-      const sortable = Sortable.get(vm.el!)
-      expect(sortable).toBeDefined()
-    }
-    finally {
-      wrapper.unmount()
-    }
+    const sortable = Sortable.get(vm.el!)
+    expect(sortable).toBeDefined()
   })
 
   describe('stop', () => {
@@ -66,15 +58,10 @@ describe('useSortable', () => {
         },
       }))
       const vm = wrapper.vm
-      try {
-        const sortable = Sortable.get(vm.el!)
-        expect(sortable).toBeDefined()
-        vm.stop()
-        expect(Sortable.get(vm.el!)).toEqual(null)
-      }
-      finally {
-        wrapper.unmount()
-      }
+      const sortable = Sortable.get(vm.el!)
+      expect(sortable).toBeDefined()
+      vm.stop()
+      expect(Sortable.get(vm.el!)).toEqual(null)
     })
   })
 
@@ -92,17 +79,12 @@ describe('useSortable', () => {
         },
       }))
       const vm = wrapper.vm
-      try {
-        const sortable = Sortable.get(vm.el!)
-        expect(sortable).toBeDefined()
-        vm.stop()
-        expect(Sortable.get(vm.el!)).toEqual(null)
-        vm.start()
-        expect(Sortable.get(vm.el!)).toBeDefined()
-      }
-      finally {
-        wrapper.unmount()
-      }
+      const sortable = Sortable.get(vm.el!)
+      expect(sortable).toBeDefined()
+      vm.stop()
+      expect(Sortable.get(vm.el!)).toEqual(null)
+      vm.start()
+      expect(Sortable.get(vm.el!)).toBeDefined()
     })
   })
 
@@ -120,15 +102,10 @@ describe('useSortable', () => {
         },
       }))
       const vm = wrapper.vm
-      try {
-        const sortable = Sortable.get(vm.el!)
-        expect(sortable?.option('disabled')).toEqual(false)
-        vm.option('disabled', true)
-        expect(sortable?.option('disabled')).toEqual(true)
-      }
-      finally {
-        wrapper.unmount()
-      }
+      const sortable = Sortable.get(vm.el!)
+      expect(sortable?.option('disabled')).toEqual(false)
+      vm.option('disabled', true)
+      expect(sortable?.option('disabled')).toEqual(true)
     })
 
     it('should get option in sortable', () => {
@@ -144,12 +121,7 @@ describe('useSortable', () => {
         },
       }))
       const vm = wrapper.vm
-      try {
-        expect(vm.option('disabled')).toEqual(false)
-      }
-      finally {
-        wrapper.unmount()
-      }
+      expect(vm.option('disabled')).toEqual(false)
     })
   })
 
@@ -170,13 +142,8 @@ describe('useSortable', () => {
       },
     }))
     const vm = wrapper.vm
-    try {
-      const el = unrefElement(vm.el) as HTMLElement
-      const sortable = Sortable.get(el)
-      expect(sortable).toBeDefined()
-    }
-    finally {
-      wrapper.unmount()
-    }
+    const el = unrefElement(vm.el) as HTMLElement
+    const sortable = Sortable.get(el)
+    expect(sortable).toBeDefined()
   })
 })

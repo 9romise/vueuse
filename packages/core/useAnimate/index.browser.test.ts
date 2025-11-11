@@ -1,10 +1,12 @@
-import { flushPromises, mount } from '@vue/test-utils'
+import { enableAutoUnmount, flushPromises, mount } from '@vue/test-utils'
 import { useAnimate } from '@vueuse/core'
-import { describe, expect, it, vi } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 import { defineComponent, shallowRef } from 'vue'
 // import { useAnimate } from './index'
 
 describe('useAnimate', () => {
+  enableAutoUnmount(afterEach)
+
   it('browser should support useAnimate', () => {
     const wrapper = mount(defineComponent({
       template: '<p ref="el">test</p>',
@@ -18,7 +20,6 @@ describe('useAnimate', () => {
     const vm = wrapper.vm
 
     expect(vm.isSupported).toBe(true)
-    wrapper.unmount()
   })
 
   it('should be running', async () => {
@@ -35,7 +36,6 @@ describe('useAnimate', () => {
     await vi.waitFor(() => {
       expect(vm.playState).toBe('running')
     })
-    wrapper.unmount()
   })
 
   it('should support keyframes refs', async () => {
@@ -70,8 +70,6 @@ describe('useAnimate', () => {
         transform: 'rotate(180deg)',
       }])
     })
-
-    wrapper.unmount()
   })
 
   it('should not automatically start the animation when shown if `immediate` is false', async () => {
@@ -100,7 +98,5 @@ describe('useAnimate', () => {
 
     // It should not have started automatically
     expect(vm.animate?.playState).toBe('paused')
-
-    wrapper.unmount()
   })
 })
