@@ -92,7 +92,7 @@ export function insertNodeAt(
   parentElement: Element,
   element: Element,
   index: number,
-) {
+): void {
   const refElement = parentElement.children[index]
   parentElement.insertBefore(element, refElement)
 }
@@ -102,7 +102,7 @@ export function insertNodeAt(
  * @param {Node} node
  * @see https://github.com/Alfred-Skyblue/vue-draggable-plus/blob/a3829222095e1949bf2c9a20979d7b5930e66f14/src/utils/index.ts#L96C1-L102C2
  */
-export function removeNode(node: Node) {
+export function removeNode(node: Node): void {
   if (node.parentNode)
     node.parentNode.removeChild(node)
 }

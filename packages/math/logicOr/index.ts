@@ -13,4 +13,4 @@ export function logicOr(...args: MaybeRefOrGetter<any>[]): ComputedRef<boolean> 
 }
 
 /** @deprecated use `logicOr` instead */
-export const or = logicOr
+export const or: typeof logicOr = logicOr

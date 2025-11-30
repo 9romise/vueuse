@@ -5,7 +5,7 @@ export function getCategories(functions: VueUseFunction[]): string[] {
     functions
       .filter(i => !i.internal)
       .map(i => i.category)
-      .filter(Boolean),
+      .filter(Boolean) as string[],
   ).sort(
     (a, b) => (a.startsWith('@') && !b.startsWith('@'))
       ? 1
@@ -15,6 +15,6 @@ export function getCategories(functions: VueUseFunction[]): string[] {
   )
 }
 
-export function uniq<T extends any[]>(a: T) {
-  return Array.from(new Set(a))
+export function uniq<T extends any[]>(a: T): T {
+  return Array.from(new Set(a)) as T
 }

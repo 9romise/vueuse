@@ -1,4 +1,4 @@
-import type { MaybeRefOrGetter } from 'vue'
+import type { ComputedRef, MaybeRefOrGetter } from 'vue'
 import type { ProjectorFunction } from '../createGenericProjection'
 import { createProjection } from '../createProjection'
 
@@ -14,6 +14,6 @@ export function useProjection(
   fromDomain: MaybeRefOrGetter<readonly [number, number]>,
   toDomain: MaybeRefOrGetter<readonly [number, number]>,
   projector?: ProjectorFunction<number, number>,
-) {
+): ComputedRef<number> {
   return createProjection(fromDomain, toDomain, projector)(input)
 }

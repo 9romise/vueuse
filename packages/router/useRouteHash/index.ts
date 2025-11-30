@@ -1,4 +1,4 @@
-import type { MaybeRefOrGetter } from 'vue'
+import type { MaybeRefOrGetter, Ref } from 'vue'
 import type { ReactiveRouteOptions, RouteHashValueRaw } from '../_types'
 import { tryOnScopeDispose } from '@vueuse/shared'
 import { customRef, nextTick, toValue, watch } from 'vue'
@@ -14,7 +14,7 @@ export function useRouteHash(
     route = useRoute(),
     router = useRouter(),
   }: ReactiveRouteOptions = {},
-) {
+): Ref<RouteHashValueRaw> {
   _hash = route.hash
 
   tryOnScopeDispose(() => {

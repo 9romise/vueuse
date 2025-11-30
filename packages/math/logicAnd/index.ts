@@ -13,4 +13,4 @@ export function logicAnd(...args: MaybeRefOrGetter<any>[]): ComputedRef<boolean>
 }
 
 /** @deprecated use `logicAnd` instead */
-export const and = logicAnd
+export const and: typeof logicAnd = logicAnd

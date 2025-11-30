@@ -1,4 +1,4 @@
-import type { MaybeRefOrGetter } from 'vue'
+import type { MaybeRefOrGetter, ShallowRef } from 'vue'
 import { isClient, toRef } from '@vueuse/shared'
 import QRCode from 'qrcode'
 import { shallowRef, watch } from 'vue'
@@ -13,7 +13,7 @@ import { shallowRef, watch } from 'vue'
 export function useQRCode(
   text: MaybeRefOrGetter<string>,
   options?: QRCode.QRCodeToDataURLOptions,
-) {
+): ShallowRef<string> {
   const src = toRef(text)
   const result = shallowRef('')
 

@@ -13,4 +13,4 @@ export function logicNot(v: MaybeRefOrGetter<any>): ComputedRef<boolean> {
 }
 
 /** @deprecated use `logicNot` instead */
-export const not = logicNot
+export const not: typeof logicNot = logicNot
