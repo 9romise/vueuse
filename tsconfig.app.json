@@ -1,0 +1,26 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/tsbuildinfo/tsconfig.app.tsbuildinfo",
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "webworker"],
+    "types": [
+      "@types/web-bluetooth"
+    ],
+    "declaration": true,
+    "declarationDir": "./types",
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "isolatedDeclarations": true
+  },
+  "include": [
+    "packages/**/*.ts"
+  ],
+  "exclude": [
+    "packages/core/_template",
+    "packages/**/*.test.ts",
+    "**/scripts/**",
+    "**/**/dist",
+    "**/*.config.ts"
+  ]
+}

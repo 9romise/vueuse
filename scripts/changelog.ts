@@ -1,7 +1,7 @@
 import type { CommitInfo, ContributorInfo } from '@vueuse/metadata'
+import { functions } from '@vueuse/metadata'
 import md5 from 'md5'
 import Git from 'simple-git'
-import { functions } from '../packages/metadata/metadata'
 import { uniq } from './utils'
 
 const git = Git({

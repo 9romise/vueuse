@@ -1,0 +1,22 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/tsbuildinfo/tsconfig.test.tsbuildinfo",
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "webworker"],
+    "types": [
+      "@types/web-bluetooth",
+      "vitest",
+      "vitest-browser-vue"
+    ]
+  },
+  "include": [
+    "packages/**/*",
+    "packages/.test/**/*"
+  ],
+  "exclude": [
+    "packages/core/useDark/demo.vue",
+    "**/scripts/**",
+    "**/*.config.ts"
+  ]
+}

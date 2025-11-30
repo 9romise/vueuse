@@ -1,0 +1,23 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/tsbuildinfo/tsconfig.doc.tsbuildinfo",
+    "lib": ["ESNext", "DOM", "DOM.Iterable", "webworker"],
+    "types": [
+      "@types/web-bluetooth",
+      "vite-plugin-pwa/vue"
+    ]
+  },
+  "include": [
+    "packages",
+    "packages/.vitepress/**/*",
+    "meta",
+    "scripts"
+  ],
+  "exclude": [
+    "**/**/dist",
+    "packages/**/*.test.ts",
+    "packages/**/tsdown.config.ts"
+  ]
+}

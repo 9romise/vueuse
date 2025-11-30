@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/tsbuildinfo/tsconfig.node.tsbuildinfo",
+    "allowImportingTsExtensions": true
+  },
+  "include": [
+    "**/*.config.ts",
+    "meta",
+    "packages/metadata",
+    "scripts"
+  ],
+  "exclude": [
+    "playgrounds"
+  ]
+}

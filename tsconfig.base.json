@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "module": "esnext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "@vueuse/core": ["./packages/core/index.ts"],
+      "@vueuse/core/*": ["./packages/core/*"],
+      "@vueuse/integrations": ["./packages/integrations/index.ts"],
+      "@vueuse/integrations/*": ["./packages/integrations/*"],
+      "@vueuse/metadata": ["./packages/metadata/index.ts"],
+      "@vueuse/math": ["./packages/math/index.ts"],
+      "@vueuse/shared": ["./packages/shared/index.ts"],
+      "@vueuse/shared/*": ["./packages/shared/*"],
+      "@vueuse/components": ["./packages/components/index.ts"],
+      "@vueuse/components/*": ["./packages/components/*"],
+      "@vueuse/rxjs": ["./packages/rxjs/index.ts"],
+      "@vueuse/rxjs/*": ["./packages/rxjs/*"]
+    },
+    "resolveJsonModule": true,
+    "strict": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipDefaultLibCheck": true,
+    "skipLibCheck": true
+  }
+}
