@@ -10,7 +10,7 @@ import { getLifeCycleTarget } from '../utils'
  * @param sync if set to false, it will run in the nextTick() of Vue
  * @param target
  */
-export function tryOnBeforeMount(fn: Fn, sync = true, target?: ComponentInternalInstance | null) {
+export function tryOnBeforeMount(fn: Fn, sync = true, target?: ComponentInternalInstance | null): void {
   const instance = getLifeCycleTarget(target)
   if (instance)
     onBeforeMount(fn, target)

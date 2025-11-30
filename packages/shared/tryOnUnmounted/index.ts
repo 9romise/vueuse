@@ -10,7 +10,7 @@ import { getLifeCycleTarget } from '../utils'
  * @param fn
  * @param target
  */
-export function tryOnUnmounted(fn: Fn, target?: ComponentInternalInstance | null) {
+export function tryOnUnmounted(fn: Fn, target?: ComponentInternalInstance | null): void {
   const instance = getLifeCycleTarget(target)
   if (instance)
     onUnmounted(fn, target)

@@ -23,6 +23,6 @@ export function refDebounced<T>(value: Ref<T>, ms: MaybeRefOrGetter<number> = 20
 }
 
 /** @deprecated use `refDebounced` instead */
-export const debouncedRef = refDebounced
+export const debouncedRef: typeof refDebounced = refDebounced
 /** @deprecated use `refDebounced` instead */
-export const useDebounce = refDebounced
+export const useDebounce: typeof refDebounced = refDebounced

@@ -41,4 +41,4 @@ export function watchPausable<Immediate extends Readonly<boolean> = false>(
 }
 
 /** @deprecated use `watchPausable` instead */
-export const pausableWatch = watchPausable
+export const pausableWatch: typeof watchPausable = watchPausable

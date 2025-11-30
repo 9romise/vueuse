@@ -8,9 +8,7 @@ function cacheStringFunction<T extends (str: string) => string>(fn: T): T {
 }
 
 const hyphenateRE = /\B([A-Z])/g
-export const hyphenate = cacheStringFunction((str: string) => str.replace(hyphenateRE, '-$1').toLowerCase())
+export const hyphenate: (str: string) => string = cacheStringFunction(str => str.replace(hyphenateRE, '-$1').toLowerCase())
 
 const camelizeRE = /-(\w)/g
-export const camelize = cacheStringFunction((str: string): string => {
-  return str.replace(camelizeRE, (_, c) => (c ? c.toUpperCase() : ''))
-})
+export const camelize: (str: string) => string = cacheStringFunction(str => str.replace(camelizeRE, (_, c) => (c ? c.toUpperCase() : '')))

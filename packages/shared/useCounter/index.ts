@@ -51,7 +51,7 @@ export interface UseCounterReturn {
  * @param [initialValue]
  * @param options
  */
-export function useCounter(initialValue: MaybeRef<number> = 0, options: UseCounterOptions = {}) {
+export function useCounter(initialValue: MaybeRef<number> = 0, options: UseCounterOptions = {}): UseCounterReturn {
   let _initialValue = unref(initialValue)
   const count = shallowRef(initialValue)
 

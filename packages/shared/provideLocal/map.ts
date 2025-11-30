@@ -6,4 +6,4 @@ export type LocalProvidedState<T> = Record<LocalProvidedKey<T>, unknown>
 
 export type LocalProvidedOwner = InstanceProxy | EffectScope
 
-export const localProvidedStateMap = new WeakMap<LocalProvidedOwner, LocalProvidedState<any>>()
+export const localProvidedStateMap: WeakMap<LocalProvidedOwner, LocalProvidedState<any>> = new WeakMap()

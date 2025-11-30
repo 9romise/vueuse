@@ -35,10 +35,10 @@ export interface ConfigurableLocation {
   location?: Location
 }
 
-export const defaultWindow = /* #__PURE__ */ isClient ? window : undefined
-export const defaultDocument = /* #__PURE__ */ isClient ? window.document : undefined
-export const defaultNavigator = /* #__PURE__ */ isClient ? window.navigator : undefined
-export const defaultLocation = /* #__PURE__ */ isClient ? window.location : undefined
+export const defaultWindow: (Window & typeof globalThis) | undefined = /* #__PURE__ */ isClient ? window : undefined
+export const defaultDocument: Document | undefined = /* #__PURE__ */ isClient ? window.document : undefined
+export const defaultNavigator: Navigator | undefined = /* #__PURE__ */ isClient ? window.navigator : undefined
+export const defaultLocation: Location | undefined = /* #__PURE__ */ isClient ? window.location : undefined
 
 export interface ConfigurableDeepRefs<D extends boolean> {
   /**

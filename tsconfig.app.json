@@ -18,6 +18,7 @@
   ],
   "exclude": [
     "packages/*.ts",
+    "packages/**/demo",
     "packages/core/_template",
     "packages/**/*.test.ts",
     "**/scripts/**",

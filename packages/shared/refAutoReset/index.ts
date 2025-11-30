@@ -44,4 +44,4 @@ export function refAutoReset<T>(defaultValue: MaybeRefOrGetter<T>, afterMs: Mayb
 }
 
 /** @deprecated use `refAutoReset` instead */
-export const autoResetRef = refAutoReset
+export const autoResetRef: typeof refAutoReset = refAutoReset

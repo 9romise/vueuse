@@ -1,4 +1,4 @@
-import type { Ref, WatchSource } from 'vue'
+import type { Ref, WatchHandle, WatchSource } from 'vue'
 import type { ConfigurableFlushSync } from '../utils'
 import { watch } from 'vue'
 import { toArray } from '../utils'
@@ -28,7 +28,7 @@ export function syncRefs<T>(
   source: WatchSource<T>,
   targets: Ref<T> | Ref<T>[],
   options: SyncRefsOptions = {},
-) {
+): WatchHandle {
   const {
     flush = 'sync',
     deep = false,

@@ -29,6 +29,6 @@ export function refThrottled<T = any>(value: Ref<T>, delay = 200, trailing = tru
 }
 
 /** @deprecated use `refThrottled` instead */
-export const throttledRef = refThrottled
+export const throttledRef: typeof refThrottled = refThrottled
 /** @deprecated use `refThrottled` instead */
-export const useThrottle = refThrottled
+export const useThrottle: typeof refThrottled = refThrottled

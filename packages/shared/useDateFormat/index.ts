@@ -35,7 +35,7 @@ function formatOrdinal(num: number) {
   return num + (suffixes[(v - 20) % 10] || suffixes[v] || suffixes[0])
 }
 
-export function formatDate(date: Date, formatStr: string, options: UseDateFormatOptions = {}) {
+export function formatDate(date: Date, formatStr: string, options: UseDateFormatOptions = {}): string {
   const years = date.getFullYear()
   const month = date.getMonth()
   const days = date.getDate()
@@ -89,7 +89,7 @@ export function formatDate(date: Date, formatStr: string, options: UseDateFormat
   return formatStr.replace(REGEX_FORMAT, (match, $1) => $1 ?? matches[match]?.() ?? match)
 }
 
-export function normalizeDate(date: DateLike) {
+export function normalizeDate(date: DateLike): Date {
   if (date === null)
     return new Date(Number.NaN) // null is invalid
   if (date === undefined)

@@ -130,4 +130,4 @@ export function watchIgnorable<Immediate extends Readonly<boolean> = false>(
 }
 
 /** @deprecated use `watchIgnorable` instead */
-export const ignorableWatch = watchIgnorable
+export const ignorableWatch: typeof watchIgnorable = watchIgnorable

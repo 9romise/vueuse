@@ -44,7 +44,7 @@ export interface DebounceFilterOptions {
 /**
  * @internal
  */
-export function createFilterWrapper<T extends AnyFn>(filter: EventFilter, fn: T) {
+export function createFilterWrapper<T extends AnyFn>(filter: EventFilter, fn: T): (this: any, ...args: ArgumentsType<T>) => Promise<Awaited<ReturnType<T>>> {
   function wrapper(this: any, ...args: ArgumentsType<T>) {
     return new Promise<Awaited<ReturnType<T>>>((resolve, reject) => {
       // make sure it's a promise
@@ -64,7 +64,7 @@ export const bypassFilter: EventFilter = (invoke) => {
 /**
  * Create an EventFilter that debounce the events
  */
-export function debounceFilter(ms: MaybeRefOrGetter<number>, options: DebounceFilterOptions = {}) {
+export function debounceFilter(ms: MaybeRefOrGetter<number>, options: DebounceFilterOptions = {}): EventFilter {
   let timer: TimerHandle
   let maxTimer: TimerHandle
   let lastRejector: AnyFn = noop

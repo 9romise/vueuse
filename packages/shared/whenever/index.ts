@@ -1,4 +1,4 @@
-import type { WatchCallback, WatchOptions, WatchSource } from 'vue'
+import type { WatchCallback, WatchHandle, WatchOptions, WatchSource } from 'vue'
 import { nextTick, watch } from 'vue'
 
 export interface WheneverOptions extends WatchOptions {
@@ -17,7 +17,7 @@ export interface WheneverOptions extends WatchOptions {
  *
  * @see https://vueuse.org/whenever
  */
-export function whenever<T>(source: WatchSource<T | false | null | undefined>, cb: WatchCallback<T>, options?: WheneverOptions) {
+export function whenever<T>(source: WatchSource<T | false | null | undefined>, cb: WatchCallback<T>, options?: WheneverOptions): WatchHandle {
   const stop = watch(
     source,
     (v, ov, onInvalidate) => {

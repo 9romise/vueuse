@@ -11,7 +11,7 @@ import { getLifeCycleTarget } from '../utils'
  * @param sync if set to false, it will run in the nextTick() of Vue
  * @param target
  */
-export function tryOnMounted(fn: Fn, sync = true, target?: ComponentInternalInstance | null) {
+export function tryOnMounted(fn: Fn, sync = true, target?: ComponentInternalInstance | null): void {
   const instance = getLifeCycleTarget(target)
   if (instance)
     onMounted(fn, target)

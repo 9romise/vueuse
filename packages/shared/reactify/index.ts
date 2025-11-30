@@ -37,4 +37,4 @@ export function reactify<T extends AnyFn, K extends boolean = true>(fn: T, optio
 }
 
 /** @deprecated use `reactify` instead */
-export const createReactiveFn = reactify
+export const createReactiveFn: typeof reactify = reactify

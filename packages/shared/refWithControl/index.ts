@@ -105,4 +105,4 @@ export function refWithControl<T>(
 }
 
 /** @deprecated use `refWithControl` instead */
-export const controlledRef = refWithControl
+export const controlledRef: typeof refWithControl = refWithControl

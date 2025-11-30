@@ -35,4 +35,4 @@ export function watchDebounced<Immediate extends Readonly<boolean> = false>(
 }
 
 /** @deprecated use `watchDebounced` instead */
-export const debouncedWatch = watchDebounced
+export const debouncedWatch: typeof watchDebounced = watchDebounced

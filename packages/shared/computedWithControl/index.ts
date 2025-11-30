@@ -76,4 +76,4 @@ export function computedWithControl<T>(
 }
 
 /** @deprecated use `computedWithControl` instead */
-export const controlledComputed = computedWithControl
+export const controlledComputed: typeof computedWithControl = computedWithControl

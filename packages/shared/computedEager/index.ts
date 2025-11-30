@@ -35,4 +35,4 @@ export function computedEager<T>(fn: () => T, options?: ComputedEagerOptions): C
 }
 
 /** @deprecated use `computedEager` instead */
-export const eagerComputed = computedEager
+export const eagerComputed: typeof computedEager = computedEager

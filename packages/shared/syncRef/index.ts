@@ -136,7 +136,7 @@ export function syncRef<L, R, D extends Direction = 'both'>(
   ...[options]: Equal<L, R> extends true
     ? [options?: SyncRefOptions<L, R, D>]
     : [options: SyncRefOptions<L, R, D>]
-) {
+): () => void {
   const {
     flush = 'sync',
     deep = false,

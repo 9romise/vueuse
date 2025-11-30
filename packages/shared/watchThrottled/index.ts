@@ -38,4 +38,4 @@ export function watchThrottled<Immediate extends Readonly<boolean> = false>(
 }
 
 /** @deprecated use `watchThrottled` instead */
-export const throttledWatch = watchThrottled
+export const throttledWatch: typeof watchThrottled = watchThrottled

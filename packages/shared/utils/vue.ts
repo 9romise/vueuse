@@ -1,6 +1,6 @@
 import type { ComponentInternalInstance } from 'vue'
 import { getCurrentInstance } from 'vue'
 
-export function getLifeCycleTarget(target?: ComponentInternalInstance | null) {
+export function getLifeCycleTarget(target?: ComponentInternalInstance | null): ComponentInternalInstance | null {
   return target || getCurrentInstance()
 }
