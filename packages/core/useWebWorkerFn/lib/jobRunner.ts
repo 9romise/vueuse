@@ -12,7 +12,7 @@
  * to be passed to the "userFunc" function
  */
 function jobRunner(userFunc: Function) {
-  return (e: MessageEvent) => {
+  return (e: MessageEvent): Promise<void> => {
     const userFuncArgs = e.data[0]
 
     // eslint-disable-next-line prefer-spread

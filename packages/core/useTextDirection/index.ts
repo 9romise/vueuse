@@ -1,7 +1,7 @@
+import type { WritableComputedRef } from 'vue'
 import type { ConfigurableDocument } from '../_configurable'
 import type { MaybeElement } from '../unrefElement'
 import { tryOnMounted } from '@vueuse/shared'
-
 import { computed, ref as deepRef } from 'vue'
 import { defaultDocument } from '../_configurable'
 import { useMutationObserver } from '../useMutationObserver'
@@ -29,6 +29,8 @@ export interface UseTextDirectionOptions extends ConfigurableDocument {
   initialValue?: UseTextDirectionValue
 }
 
+export type UseTextDirectionReturn = WritableComputedRef<UseTextDirectionValue>
+
 /**
  * Reactive dir of the element's text.
  *
@@ -36,7 +38,7 @@ export interface UseTextDirectionOptions extends ConfigurableDocument {
  *
  * @__NO_SIDE_EFFECTS__
  */
-export function useTextDirection(options: UseTextDirectionOptions = {}) {
+export function useTextDirection(options: UseTextDirectionOptions = {}): UseTextDirectionReturn {
   const {
     document = defaultDocument,
     selector = 'html',
@@ -48,7 +50,7 @@ export function useTextDirection(options: UseTextDirectionOptions = {}) {
     return document?.querySelector(selector)?.getAttribute('dir') as UseTextDirectionValue ?? initialValue
   }
 
-  const dir = deepRef<UseTextDirectionValue>(getValue())
+  const dir = deepRef(getValue())
 
   tryOnMounted(() => dir.value = getValue())
 
@@ -60,7 +62,7 @@ export function useTextDirection(options: UseTextDirectionOptions = {}) {
     )
   }
 
-  return computed<UseTextDirectionValue>({
+  return computed({
     get() {
       return dir.value
     },

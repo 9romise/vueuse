@@ -17,7 +17,7 @@ export interface UseRTDBOptions {
 export function useRTDB<T = any>(
   docRef: DatabaseReference,
   options: UseRTDBOptions = {},
-) {
+): Ref<T | undefined> {
   const {
     errorHandler = (err: Error) => console.error(err),
     autoDispose = true,

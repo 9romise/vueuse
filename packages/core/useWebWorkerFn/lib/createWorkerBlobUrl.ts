@@ -16,7 +16,7 @@ import jobRunner from './jobRunner'
  * .then(postMessage(['SUCCESS', result]))
  * .catch(postMessage(['ERROR', error])"
  */
-function createWorkerBlobUrl(fn: Function, deps: string[], localDeps: Function[]) {
+function createWorkerBlobUrl(fn: Function, deps: string[], localDeps: Function[]): string {
   const blobCode = `${depsParser(deps, localDeps)}; onmessage=(${jobRunner})(${fn})`
   const blob = new Blob([blobCode], { type: 'text/javascript' })
   const url = URL.createObjectURL(blob)

@@ -1,3 +1,4 @@
+import type { ShallowRef } from 'vue'
 import {
   getCurrentInstance,
   // eslint-disable-next-line no-restricted-imports
@@ -12,7 +13,7 @@ import {
  *
  * @__NO_SIDE_EFFECTS__
  */
-export function useMounted() {
+export function useMounted(): ShallowRef<boolean> {
   const isMounted = shallowRef(false)
 
   const instance = getCurrentInstance()

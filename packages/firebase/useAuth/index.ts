@@ -7,6 +7,11 @@ export interface UseFirebaseAuthOptions {
   user: Ref<User | null>
 }
 
+export interface UseFirebaseAuthReturn {
+  isAuthenticated: ComputedRef<boolean>
+  user: Ref<User | null>
+}
+
 /**
  * Reactive Firebase Auth binding
  *
@@ -14,7 +19,7 @@ export interface UseFirebaseAuthOptions {
  *
  * @__NO_SIDE_EFFECTS__
  */
-export function useAuth(auth: Auth) {
+export function useAuth(auth: Auth): UseFirebaseAuthReturn {
   const user = deepRef<User | null>(auth.currentUser)
   const isAuthenticated = computed(() => !!user.value)
 

@@ -11,7 +11,7 @@
  * @example
  * depsParser(['demo1', 'demo2']) // return importScripts('demo1', 'demo2')
  */
-function depsParser(deps: string[], localDeps: Function[]) {
+function depsParser(deps: string[], localDeps: Function[]): string {
   if (deps.length === 0 && localDeps.length === 0)
     return ''
 

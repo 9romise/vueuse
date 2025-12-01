@@ -1,5 +1,5 @@
 import type { FuseResult, IFuseOptions } from 'fuse.js'
-import type { ComputedRef, MaybeRefOrGetter } from 'vue'
+import type { ComputedRef, MaybeRefOrGetter, Ref } from 'vue'
 import Fuse from 'fuse.js'
 import { computed, ref as deepRef, toValue, watch } from 'vue'
 
@@ -10,11 +10,16 @@ export interface UseFuseOptions<T> {
   matchAllWhenSearchEmpty?: boolean
 }
 
+export interface UseFuseReturn<T> {
+  fuse: Ref<Fuse<T>>
+  results: ComputedRef<FuseResult<T>[]>
+}
+
 export function useFuse<DataItem>(
   search: MaybeRefOrGetter<string>,
   data: MaybeRefOrGetter<DataItem[]>,
   options?: MaybeRefOrGetter<UseFuseOptions<DataItem>>,
-) {
+): UseFuseReturn<DataItem> {
   const createFuse = () => {
     return new Fuse(
       toValue(data) ?? [],
@@ -52,5 +57,3 @@ export function useFuse<DataItem>(
     results,
   }
 }
-
-export type UseFuseReturn = ReturnType<typeof useFuse>
